@@ -78,3 +78,28 @@ input {
   width: 60%;
   text-align: center;
 }
+
+.alert {
+  position: fixed;
+  z-index: 2;
+  width: 100%;
+}
+
+.alert-box {
+  border: #ff0000 1px solid;
+  background-color: black;
+  margin: 150px auto;
+  text-align: center;
+  font-size: 30px;
+  width: 700px;
+  padding: 30px;
+}
+
+.closebtn:hover {
+  cursor: pointer;
+  color: white;
+}
+
+.hidden {
+  display: none;
+}

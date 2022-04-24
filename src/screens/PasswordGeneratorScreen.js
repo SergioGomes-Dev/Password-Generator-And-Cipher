@@ -94,8 +94,26 @@ const PasswordGeneratorScreen = () => {
       setNumbers(false);
     }
   }
+
+  function copyClick() {
+    navigator.clipboard.writeText(password);
+    document.getElementById("alert").classList.remove("hidden");
+  }
+
+  function alertClick() {
+    document.getElementById("alert").classList.add("hidden");
+  }
+
   return (
     <>
+      <div id="alert" className="alert hidden">
+        <div className="alert-box">
+          Generated password copied to clipboard
+          <span className="closebtn" onClick={alertClick}>
+            &times;
+          </span>
+        </div>
+      </div>
       <div className="generator-box">
         <h2>Password Generator</h2>
         <div className="generator">
@@ -161,7 +179,9 @@ const PasswordGeneratorScreen = () => {
                 ></input>
               </p>
               <p>
-                <button className="btn">Copy</button>
+                <button className="btn" onClick={copyClick}>
+                  Copy
+                </button>
               </p>
             </div>
           </table>
