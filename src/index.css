@@ -24,7 +24,7 @@ header button {
   min-width: 200px;
 }
 
-button:hover {
+header button:hover {
   background-color: #cc0000;
   color: white;
   border: 3px solid #cc0000;
@@ -47,6 +47,37 @@ footer {
   padding: 20px;
   margin-top: 50px;
   font-size: 20px;
+}
+
+.footer-content {
+  text-align: center;
+}
+
+.footer-content a {
+  padding: 10px;
+}
+
+.btn-footer {
+  background-color: black;
+  color: inherit;
+  border: 0;
+  font-family: inherit;
+  font-size: 18px;
+  padding: 0px 5px 20px 5px;
+}
+
+.btn-footer:hover {
+  color: white;
+  cursor: pointer;
+}
+
+.center {
+  text-align: center;
+  padding: 20px;
+}
+
+ul {
+  list-style-type: none;
 }
 
 /* Home Screen */
