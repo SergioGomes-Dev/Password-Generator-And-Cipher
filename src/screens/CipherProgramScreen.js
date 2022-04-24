@@ -10,13 +10,19 @@ const CipherProgramScreen = () => {
     setCipher(e.target.value);
   }
   function keyChange(e) {
-    setKey(e.target.value);
+    if (cipher === "Caesar Cipher") {
+      setKey(e.target.value);
+    }
   }
   function stringChange(e) {
-    setString(e.target.value);
+    if (cipher === "Caesar Cipher") {
+      setString(e.target.value);
+    }
   }
   function encipher() {
-    caesarCipher();
+    if (cipher === "Caesar Cipher") {
+      caesarCipher();
+    }
   }
   function caesarCipher() {
     var output = "";
@@ -103,47 +109,87 @@ const CipherProgramScreen = () => {
         </table>
         <div className="cipher-content">
           <h2>Cipher Selected: {cipher} </h2>
-          <table>
-            <tr>
-              <td>Key(-25, 25):</td>
-              <td>
-                <input
-                  className="key"
-                  onChange={keyChange}
-                  type="number"
-                  min="-25"
-                  max="25"
-                  value={key}
-                ></input>
-              </td>
-            </tr>
-            <tr>
-              <td>String:</td>
-              <td>
-                <input
-                  className="cipher-string"
-                  onChange={stringChange}
-                  type="text"
-                  placeholder="Enter your string here"
-                  value={string}
-                ></input>
-              </td>
-            </tr>
-            <tr>
-              <td>Output:</td>
-              <td>
-                <input
-                  className="cipher-string"
-                  type="text"
-                  value={outputString}
-                ></input>
-              </td>
-            </tr>
-          </table>
-          <button onClick={encipher} className="encipher btn">
-            Encipher
-          </button>
-          <button className="copy btn">Copy</button>
+          {cipher === "Caesar Cipher" && (
+            <>
+              <table>
+                <tr>
+                  <td>Key:</td>
+                  <td>
+                    <input
+                      className="key"
+                      onChange={keyChange}
+                      type="number"
+                      min="-25"
+                      max="25"
+                      value={key}
+                    ></input>
+                  </td>
+                </tr>
+                <tr>
+                  <td>String:</td>
+                  <td>
+                    <input
+                      className="cipher-string"
+                      onChange={stringChange}
+                      type="text"
+                      placeholder="Enter your string here"
+                      value={string}
+                    ></input>
+                  </td>
+                </tr>
+                <tr>
+                  <td>Output:</td>
+                  <td>
+                    <input
+                      className="cipher-string"
+                      type="text"
+                      value={outputString}
+                    ></input>
+                  </td>
+                </tr>
+              </table>
+              <button onClick={encipher} className="encipher btn">
+                Encipher
+              </button>
+              <button className="copy btn">Copy</button>
+            </>
+          )}
+          {cipher === "Vigenère Cipher" && (
+            <>
+              <table>
+                <tr>
+                  <td>Key:</td>
+                  <td>
+                    <input
+                      className="cipher-string"
+                      type="text"
+                      placeholder="Enter your key here"
+                    ></input>
+                  </td>
+                </tr>
+                <tr>
+                  <td>String:</td>
+                  <td>
+                    <input
+                      className="cipher-string"
+                      type="text"
+                      placeholder="Enter your string here"
+                    ></input>
+                  </td>
+                </tr>
+                <tr>
+                  <td>Output:</td>
+                  <td>
+                    <input className="cipher-string" type="text"></input>
+                  </td>
+                </tr>
+              </table>
+              <button onClick={encipher} className="encipher btn">
+                Encipher
+              </button>
+              <button className="copy btn">Copy</button>
+            </>
+          )}
         </div>
       </div>
     </>

@@ -195,6 +195,7 @@ h3 {
 .cipher-string {
   width: 300px;
   margin-left: 10px;
+  text-align: center;
 }
 
 .encipher {
