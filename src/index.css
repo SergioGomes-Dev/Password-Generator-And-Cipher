@@ -41,6 +41,13 @@ a {
   color: #ff0000;
 }
 
+/* Home Screen */
+.home {
+  text-align: center;
+  padding-top: 20px;
+  margin: 15px;
+}
+
 /* Password Generator */
 .generator-box {
   border: 3px solid #ff0000;
