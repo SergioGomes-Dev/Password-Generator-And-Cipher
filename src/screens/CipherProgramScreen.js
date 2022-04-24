@@ -280,6 +280,81 @@ const CipherProgramScreen = () => {
           )}
         </div>
       </div>
+      {cipher === "Caesar Cipher" && (
+        <div className="info">
+          <h1>Caesar Cipher Information</h1>
+          <p>The Caesar cipher is also known as a shift cipher</p>
+          <p>
+            It is one of the most simple and widely known encryption techniques
+            needing only a piece of paper and a pen
+          </p>
+          <p>
+            Each letter in a string of text is replaced by a letter a certain
+            number(key) of positions down or up the alphabet
+          </p>
+          <p>
+            For Example: ABC with a Key of 1 would become BCD but ABC with a Key
+            of 3 would become DEF
+          </p>
+          <p>
+            The name originates with Julius Caesar who used this method for his
+            letters.
+          </p>
+          <p>
+            For more in-depth information click{" "}
+            <a
+              href="https://en.wikipedia.org/wiki/Caesar_cipher"
+              target="_blank"
+              rel="noreferrer"
+            >
+              here
+            </a>
+          </p>
+        </div>
+      )}
+      {cipher === "Vigenère Cipher" && (
+        <div className="info">
+          <h1>Vigenère Cipher Information</h1>
+          <p>The Vigenère Cipher is more complex than the Caesar Cipher</p>
+          <p>It uses a polyalphabetic substitution(uses multiple alphabets)</p>
+          <p>
+            A table of alphabets is used called a{" "}
+            <a
+              href="https://en.wikipedia.org/wiki/File:Vigen%C3%A8re_square_shading.svg"
+              target="_blank"
+              rel="noreferrer"
+            >
+              tabula recta
+            </a>
+          </p>
+          <p>
+            It has the alphabet written out 26 times in different rows in
+            different positions
+          </p>
+          <p>
+            The Key is used to modify the string and is repeated until the
+            string is complete
+          </p>
+          <p>
+            For example: If the string is NEVER HAVE I EVER and the Key is HELLO
+          </p>
+          <p>
+            The string has 14 characters therefore the key needs to be the same
+          </p>
+          <p>The result is HELLOHELLOHELL</p>
+          <p>
+            For more in-depth information click{" "}
+            <a
+              href="https://en.wikipedia.org/wiki/Vigen%C3%A8re_cipher"
+              target="_blank"
+              rel="noreferrer"
+            >
+              here
+            </a>
+          </p>
+          <p></p>
+        </div>
+      )}
     </>
   );
 };
