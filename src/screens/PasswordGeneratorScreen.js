@@ -15,6 +15,13 @@ const PasswordGeneratorScreen = () => {
   function submitHandler(e) {
     e.preventDefault();
 
+    document
+      .getElementById("generate-btn")
+      .setAttribute(
+        "aria-label",
+        "Password has been generated, press again to generate new password"
+      );
+
     var charsLower = "abcdefghijklmnopqrstuvwxyz";
     var charsUpper = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
     var charsNumbers = "0123456789";
@@ -103,10 +110,21 @@ const PasswordGeneratorScreen = () => {
 
   function alertClick() {
     document.getElementById("alert").classList.add("hidden");
+    document.getElementById("copy-btn").focus();
   }
 
   function symbolOptionsClick() {
     document.getElementById("edit-symbols").classList.toggle("hidden");
+
+    var optionsExpanded = document
+      .getElementById("options")
+      .getAttribute("aria-expanded");
+
+    if (optionsExpanded === "false") {
+      document.getElementById("options").setAttribute("aria-expanded", "true");
+    } else if (optionsExpanded === "true") {
+      document.getElementById("options").setAttribute("aria-expanded", "false");
+    }
   }
 
   function editSymbols(e) {
@@ -124,6 +142,7 @@ const PasswordGeneratorScreen = () => {
             onClick={alertClick}
             onKeyPress={alertClick}
             tabIndex={0}
+            aria-label="Password copied to clipboard, press to close alert"
           >
             {" "}
             &times;
@@ -145,6 +164,7 @@ const PasswordGeneratorScreen = () => {
                   min="3"
                   max="30"
                   value={length}
+                  aria-label="Enter password length from 3 to 30"
                 ></input>
               </td>
             </tr>
@@ -153,7 +173,11 @@ const PasswordGeneratorScreen = () => {
                 <p>Include Uppercase ( ex. ABCDEFG )</p>
               </td>
               <td>
-                <input onClick={uppercaseClick} type="checkbox"></input>
+                <input
+                  onClick={uppercaseClick}
+                  type="checkbox"
+                  aria-label="Include Uppercase Checkbox"
+                ></input>
               </td>
             </tr>
             <tr>
@@ -161,7 +185,11 @@ const PasswordGeneratorScreen = () => {
                 <p>Include Lowercase ( ex. abcdefg )</p>
               </td>
               <td>
-                <input onClick={lowercaseClick} type="checkbox"></input>
+                <input
+                  onClick={lowercaseClick}
+                  type="checkbox"
+                  aria-label="Include Lowercase Checkbox"
+                ></input>
               </td>
             </tr>
             <tr>
@@ -169,7 +197,11 @@ const PasswordGeneratorScreen = () => {
                 <p>Include Numbers ( ex. 1234567 )</p>
               </td>
               <td>
-                <input onClick={numbersClick} type="checkbox"></input>
+                <input
+                  onClick={numbersClick}
+                  type="checkbox"
+                  aria-label="Include Numbers Checkbox"
+                ></input>
               </td>
             </tr>
             <tr>
@@ -179,12 +211,17 @@ const PasswordGeneratorScreen = () => {
                   id="options"
                   className="options"
                   onClick={symbolOptionsClick}
+                  aria-expanded="false"
                 >
                   Symbol Options
                 </button>
               </td>
               <td>
-                <input onClick={symbolsClick} type="checkbox"></input>
+                <input
+                  onClick={symbolsClick}
+                  type="checkbox"
+                  aria-label="Include Symbols Checkbox"
+                ></input>
               </td>
             </tr>
             <tr id="edit-symbols" className="hidden">
@@ -195,10 +232,16 @@ const PasswordGeneratorScreen = () => {
                   className="edit-symbols"
                   type="text"
                   value={charsSpecial}
+                  aria-label="Edit symbols character list"
                 ></input>
               </td>
             </tr>
-            <button className="btn generate" onClick={submitHandler}>
+            <button
+              id="generate-btn"
+              className="btn generate"
+              onClick={submitHandler}
+              aria-label="Press to Generate Password"
+            >
               Generate
             </button>
           </table>
@@ -211,10 +254,16 @@ const PasswordGeneratorScreen = () => {
                 className="new-password"
                 type="text"
                 value={password}
+                aria-label="Generated Password is here"
               ></input>
             </p>
             <p>
-              <button className="btn" onClick={copyClick}>
+              <button
+                id="copy-btn"
+                className="btn"
+                onClick={copyClick}
+                aria-label="Copy Password to clipboard"
+              >
                 Copy
               </button>
             </p>

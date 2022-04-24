@@ -7,13 +7,15 @@ const Header = () => {
     <header>
       <Navbar>
         <LinkContainer to="/">
-          <button>Home</button>
+          <button aria-label="Home Navigation">Home</button>
         </LinkContainer>
         <LinkContainer to="/password">
-          <button>Password Generator</button>
+          <button aria-label="Password Generator Navigation">
+            Password Generator
+          </button>
         </LinkContainer>
         <LinkContainer to="/cipher">
-          <button>Cipher Program</button>
+          <button aria-label="Cipher Program Navigation">Cipher Program</button>
         </LinkContainer>
       </Navbar>
     </header>

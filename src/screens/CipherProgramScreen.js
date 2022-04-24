@@ -29,6 +29,13 @@ const CipherProgramScreen = () => {
     }
   }
   function encipher() {
+    document
+      .getElementById("encipher-btn")
+      .setAttribute(
+        "aria-label",
+        "Text has been enciphered, press again to encipher text"
+      );
+
     if (cipher === "Caesar Cipher") {
       caesarCipher();
     } else if (cipher === "Vigenère Cipher") {
@@ -147,6 +154,7 @@ const CipherProgramScreen = () => {
 
   function alertClick() {
     document.getElementById("alert").classList.add("hidden");
+    document.getElementById("copy-btn").focus();
   }
 
   return (
@@ -160,6 +168,7 @@ const CipherProgramScreen = () => {
             onClick={alertClick}
             onKeyPress={alertClick}
             tabIndex={0}
+            aria-label="Enciphered Text copied to clipboard, press to close alert"
           >
             &times;
           </span>
@@ -177,6 +186,7 @@ const CipherProgramScreen = () => {
                 type="radio"
                 name="cipher"
                 value="Caesar Cipher"
+                aria-label="Caesar Cipher Radio Button"
               ></input>
             </td>
             <td>
@@ -186,6 +196,7 @@ const CipherProgramScreen = () => {
                 type="radio"
                 name="cipher"
                 value="Vigenère Cipher"
+                aria-label="Vigenère Cipher Radio Button"
               ></input>
             </td>
           </tr>
@@ -205,6 +216,7 @@ const CipherProgramScreen = () => {
                       min="-25"
                       max="25"
                       value={key}
+                      aria-label="Pick a key between -25 to 25"
                     ></input>
                   </td>
                 </tr>
@@ -227,14 +239,20 @@ const CipherProgramScreen = () => {
                       className="cipher-string"
                       type="text"
                       value={outputString}
+                      placeholder="Output will appear here"
                     ></input>
                   </td>
                 </tr>
               </table>
-              <button onClick={encipher} className="encipher btn">
+              <button
+                id="encipher-btn"
+                onClick={encipher}
+                className="encipher btn"
+                aria-label="Press to Encipher text"
+              >
                 Encipher
               </button>
-              <button className="copy btn" onClick={copyClick}>
+              <button id="copy-btn" className="copy btn" onClick={copyClick}>
                 Copy
               </button>
             </>
@@ -273,14 +291,19 @@ const CipherProgramScreen = () => {
                       className="cipher-string"
                       type="text"
                       value={vOutputString}
+                      placeholder="Output will appear here"
                     ></input>
                   </td>
                 </tr>
               </table>
-              <button onClick={encipher} className="encipher btn">
+              <button
+                id="encipher-btn"
+                onClick={encipher}
+                className="encipher btn"
+              >
                 Encipher
               </button>
-              <button className="copy btn" onClick={copyClick}>
+              <button id="copy-btn" className="copy btn" onClick={copyClick}>
                 Copy
               </button>
             </>
