@@ -11,7 +11,9 @@ const CipherProgramScreen = () => {
   }
   function keyChange(e) {
     if (cipher === "Caesar Cipher") {
-      setKey(e.target.value);
+      if (e.target.value >= -25 && e.target.value <= 25) {
+        setKey(e.target.value);
+      }
     }
   }
   function stringChange(e) {
