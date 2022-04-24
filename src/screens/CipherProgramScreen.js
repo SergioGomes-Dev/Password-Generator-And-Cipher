@@ -5,6 +5,9 @@ const CipherProgramScreen = () => {
   const [key, setKey] = useState(1);
   const [string, setString] = useState("");
   const [outputString, setOuputString] = useState("");
+  const [vKey, setVKey] = useState("");
+  const [vString, setVString] = useState("");
+  const [vOutputString, setVOutputString] = useState("");
 
   function click(e) {
     setCipher(e.target.value);
@@ -14,16 +17,22 @@ const CipherProgramScreen = () => {
       if (e.target.value >= -25 && e.target.value <= 25) {
         setKey(e.target.value);
       }
+    } else if (cipher === "Vigenère Cipher") {
+      setVKey(e.target.value.toUpperCase());
     }
   }
   function stringChange(e) {
     if (cipher === "Caesar Cipher") {
       setString(e.target.value);
+    } else if (cipher === "Vigenère Cipher") {
+      setVString(e.target.value.toUpperCase());
     }
   }
   function encipher() {
     if (cipher === "Caesar Cipher") {
       caesarCipher();
+    } else if (cipher === "Vigenère Cipher") {
+      vigenèreCipher();
     }
   }
   function caesarCipher() {
@@ -82,8 +91,73 @@ const CipherProgramScreen = () => {
     setOuputString(output);
   }
 
+  function vigenèreCipher() {
+    var keyIndex = 0;
+    var output = "";
+
+    for (var i = 0; i < vString.length; i++) {
+      // The current character in the string
+      var char = vString[i];
+
+      // The i is so Upper & Lowercase differences will be ignored
+      if (char.match(/[a-z]/i)) {
+        // Get characters code
+        var charCode = vString.charCodeAt(i);
+
+        //If character is between A - Z
+        if (charCode >= 65 && charCode <= 90) {
+          var result = "";
+          // Get key characters code
+          var keyChar = vKey.charCodeAt(keyIndex);
+          // Vigenère logic
+          result = keyChar - 65 + charCode;
+          // If charcode if above Z
+          if (result > 90) {
+            result = result - 26;
+          }
+          // Charcode back into Letter
+          result = String.fromCharCode(result);
+          // Add to output
+          output = output.concat(result);
+        }
+        //Controls Key Index
+        if (keyIndex >= vKey.length - 1) {
+          keyIndex = 0;
+        } else {
+          keyIndex += 1;
+        }
+      } else {
+        // If character is not a letter add to output
+        output = output.concat(char);
+      }
+    }
+    setVOutputString(output);
+  }
+
+  function copyClick() {
+    if (cipher === "Caesar Cipher") {
+      navigator.clipboard.writeText(outputString);
+    } else if (cipher === "Vigenère Cipher") {
+      navigator.clipboard.writeText(vOutputString);
+    }
+
+    document.getElementById("alert").classList.remove("hidden");
+  }
+
+  function alertClick() {
+    document.getElementById("alert").classList.add("hidden");
+  }
+
   return (
     <>
+      <div id="alert" className="alert hidden">
+        <div className="alert-box">
+          Enciphered text copied to clipboard
+          <span className="closebtn" onClick={alertClick}>
+            &times;
+          </span>
+        </div>
+      </div>
       <div className="cipher-box">
         <h2>Cipher Program</h2>
         <h3>Pick a Cipher</h3>
@@ -153,7 +227,9 @@ const CipherProgramScreen = () => {
               <button onClick={encipher} className="encipher btn">
                 Encipher
               </button>
-              <button className="copy btn">Copy</button>
+              <button className="copy btn" onClick={copyClick}>
+                Copy
+              </button>
             </>
           )}
           {cipher === "Vigenère Cipher" && (
@@ -164,8 +240,10 @@ const CipherProgramScreen = () => {
                   <td>
                     <input
                       className="cipher-string"
+                      onChange={keyChange}
                       type="text"
                       placeholder="Enter your key here"
+                      value={vKey}
                     ></input>
                   </td>
                 </tr>
@@ -174,22 +252,30 @@ const CipherProgramScreen = () => {
                   <td>
                     <input
                       className="cipher-string"
+                      onChange={stringChange}
                       type="text"
                       placeholder="Enter your string here"
+                      value={vString}
                     ></input>
                   </td>
                 </tr>
                 <tr>
                   <td>Output:</td>
                   <td>
-                    <input className="cipher-string" type="text"></input>
+                    <input
+                      className="cipher-string"
+                      type="text"
+                      value={vOutputString}
+                    ></input>
                   </td>
                 </tr>
               </table>
               <button onClick={encipher} className="encipher btn">
                 Encipher
               </button>
-              <button className="copy btn">Copy</button>
+              <button className="copy btn" onClick={copyClick}>
+                Copy
+              </button>
             </>
           )}
         </div>
