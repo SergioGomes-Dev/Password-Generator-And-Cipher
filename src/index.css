@@ -35,3 +35,45 @@ button:hover {
   color: white;
   border: 3px solid #cc0000;
 }
+
+/* Password Generator */
+.generator-box {
+  border: 3px solid #ff0000;
+  width: 80%;
+  margin: 50px auto;
+  padding: 20px 10px;
+  font-size: 20px;
+}
+
+table {
+  margin: auto;
+  width: 60%;
+}
+
+h2 {
+  font-weight: 500;
+  text-align: center;
+  font-size: 24px;
+}
+
+input {
+  border: 1px #ff0000 solid;
+  background: black;
+  width: 40px;
+  color: #ff0000;
+  font-size: 18px;
+  font-family: inherit;
+}
+
+.btn {
+  background-color: black;
+  color: inherit;
+  border-radius: 10px;
+  border: 3px solid #ff0000;
+  font-family: inherit;
+  font-size: 18px;
+}
+
+.new-password {
+  width: 60%;
+}
