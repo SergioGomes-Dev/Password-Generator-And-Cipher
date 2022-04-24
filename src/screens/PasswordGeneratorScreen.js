@@ -194,7 +194,7 @@ const PasswordGeneratorScreen = () => {
             <button className="btn generate" onClick={submitHandler}>
               Generate
             </button>
-            <div>
+            <div className="generated-password">
               <p>
                 <u>Generated Password</u>
               </p>
