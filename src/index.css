@@ -31,6 +31,13 @@ header button:hover {
   cursor: pointer;
 }
 
+header button:focus {
+  background-color: #cc0000;
+  color: white;
+  border: 3px solid #cc0000;
+  cursor: pointer;
+}
+
 .active {
   background-color: #cc0000;
   color: white;
@@ -125,6 +132,20 @@ input {
   font-size: 18px;
 }
 
+.generator button:hover {
+  background-color: #cc0000;
+  color: white;
+  border: 3px solid #cc0000;
+  cursor: pointer;
+}
+
+.generator button:focus {
+  background-color: #cc0000;
+  color: white;
+  border: 3px solid #cc0000;
+  cursor: pointer;
+}
+
 .generate {
   padding: 0px 10px;
   margin: 20px auto;
@@ -153,6 +174,11 @@ input {
 }
 
 .closebtn:hover {
+  cursor: pointer;
+  color: white;
+}
+
+.closebtn:focus {
   cursor: pointer;
   color: white;
 }
@@ -228,6 +254,20 @@ a:hover {
   margin: 50px auto;
   padding: 20px 10px;
   text-align: center;
+}
+
+.cipher-box button:hover {
+  background-color: #cc0000;
+  color: white;
+  border: 3px solid #cc0000;
+  cursor: pointer;
+}
+
+.cipher-box button:focus {
+  background-color: #cc0000;
+  color: white;
+  border: 3px solid #cc0000;
+  cursor: pointer;
 }
 
 h3 {

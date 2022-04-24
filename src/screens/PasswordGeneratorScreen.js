@@ -98,6 +98,7 @@ const PasswordGeneratorScreen = () => {
   function copyClick() {
     navigator.clipboard.writeText(password);
     document.getElementById("alert").classList.remove("hidden");
+    document.getElementById("closebtn").focus();
   }
 
   function alertClick() {
@@ -117,7 +118,13 @@ const PasswordGeneratorScreen = () => {
       <div id="alert" className="alert hidden">
         <div className="alert-box">
           Generated password copied to clipboard
-          <span className="closebtn" onClick={alertClick}>
+          <span
+            id="closebtn"
+            className="closebtn"
+            onClick={alertClick}
+            onKeyPress={alertClick}
+            tabIndex={0}
+          >
             {" "}
             &times;
           </span>
@@ -194,24 +201,24 @@ const PasswordGeneratorScreen = () => {
             <button className="btn generate" onClick={submitHandler}>
               Generate
             </button>
-            <div className="generated-password">
-              <p>
-                <u>Generated Password</u>
-              </p>
-              <p>
-                <input
-                  className="new-password"
-                  type="text"
-                  value={password}
-                ></input>
-              </p>
-              <p>
-                <button className="btn" onClick={copyClick}>
-                  Copy
-                </button>
-              </p>
-            </div>
           </table>
+          <div className="generated-password">
+            <p>
+              <u>Generated Password</u>
+            </p>
+            <p>
+              <input
+                className="new-password"
+                type="text"
+                value={password}
+              ></input>
+            </p>
+            <p>
+              <button className="btn" onClick={copyClick}>
+                Copy
+              </button>
+            </p>
+          </div>
         </div>
       </div>
       <div className="info">

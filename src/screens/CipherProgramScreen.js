@@ -142,6 +142,7 @@ const CipherProgramScreen = () => {
     }
 
     document.getElementById("alert").classList.remove("hidden");
+    document.getElementById("closebtn").focus();
   }
 
   function alertClick() {
@@ -153,7 +154,13 @@ const CipherProgramScreen = () => {
       <div id="alert" className="alert hidden">
         <div className="alert-box">
           Enciphered text copied to clipboard
-          <span className="closebtn" onClick={alertClick}>
+          <span
+            id="closebtn"
+            className="closebtn"
+            onClick={alertClick}
+            onKeyPress={alertClick}
+            tabIndex={0}
+          >
             &times;
           </span>
         </div>
