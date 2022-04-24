@@ -5,6 +5,7 @@ import HomeScreen from "./screens/HomeScreen";
 import PasswordGeneratorScreen from "./screens/PasswordGeneratorScreen";
 import CipherProgramScreen from "./screens/CipherProgramScreen";
 import PrivacyPolicyScreen from "./screens/PrivacyPolicyScreen";
+import TermsAndConditionsScreen from "./screens/TermsAndConditionsScreen";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
         <Route path="/password" element={<PasswordGeneratorScreen />} />
         <Route path="/cipher" element={<CipherProgramScreen />} />
         <Route path="/privacy" element={<PrivacyPolicyScreen />} />
+        <Route path="/terms" element={<TermsAndConditionsScreen />} />
       </Routes>
       <Footer />
     </Router>

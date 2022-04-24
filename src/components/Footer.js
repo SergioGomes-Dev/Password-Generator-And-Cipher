@@ -12,6 +12,9 @@ const Footer = () => {
         <LinkContainer to="/privacy">
           <button className="btn-footer">Privacy Policy</button>
         </LinkContainer>
+        <LinkContainer to="/terms">
+          <button className="btn-footer">Terms & Conditions</button>
+        </LinkContainer>
       </div>
     </>
   );
