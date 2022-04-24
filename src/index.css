@@ -41,6 +41,14 @@ a {
   color: #ff0000;
 }
 
+footer {
+  border-top: 3px solid #ff0000;
+  text-align: center;
+  padding: 20px;
+  margin-top: 50px;
+  font-size: 20px;
+}
+
 /* Home Screen */
 .home {
   text-align: center;
