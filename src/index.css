@@ -74,6 +74,11 @@ input {
   font-size: 18px;
 }
 
+.generate {
+  padding: 0px 10px;
+  margin: 20px auto;
+}
+
 .new-password {
   width: 60%;
   text-align: center;
@@ -102,4 +107,19 @@ input {
 
 .hidden {
   display: none;
+}
+
+.options {
+  background-color: inherit;
+  color: inherit;
+  border: 3px solid #ff0000;
+  font-family: "Poppins", sans-serif;
+  font: 18px;
+  padding: 0px 10px;
+  margin-bottom: 15px;
+}
+
+.edit-symbols {
+  width: 300px;
+  margin-left: 10px;
 }

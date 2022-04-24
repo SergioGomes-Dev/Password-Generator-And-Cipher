@@ -9,6 +9,7 @@ const PasswordGeneratorScreen = () => {
   const [password, setPassword] = useState(
     "Generated Password Will Appear Here"
   );
+  const [charsSpecial, setCharsSpecial] = useState('~!@#$%^&*()_+=[]{}";><?/');
   var isSelected = false;
 
   function submitHandler(e) {
@@ -17,7 +18,6 @@ const PasswordGeneratorScreen = () => {
     var charsLower = "abcdefghijklmnopqrstuvwxyz";
     var charsUpper = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
     var charsNumbers = "0123456789";
-    var charsSpecial = '~!@#$%^&*()_+=[]{}";><?/';
     var charsSelected = "";
 
     if (symbols) {
@@ -104,12 +104,21 @@ const PasswordGeneratorScreen = () => {
     document.getElementById("alert").classList.add("hidden");
   }
 
+  function symbolOptionsClick() {
+    document.getElementById("edit-symbols").classList.toggle("hidden");
+  }
+
+  function editSymbols(e) {
+    setCharsSpecial(e.target.value);
+  }
+
   return (
     <>
       <div id="alert" className="alert hidden">
         <div className="alert-box">
           Generated password copied to clipboard
           <span className="closebtn" onClick={alertClick}>
+            {" "}
             &times;
           </span>
         </div>
@@ -159,12 +168,30 @@ const PasswordGeneratorScreen = () => {
             <tr>
               <td>
                 <p>Include Symbols ( ex. ~!@#$% )</p>
+                <button
+                  id="options"
+                  className="options"
+                  onClick={symbolOptionsClick}
+                >
+                  Symbol Options
+                </button>
               </td>
               <td>
                 <input onClick={symbolsClick} type="checkbox"></input>
               </td>
             </tr>
-            <button className="btn" onClick={submitHandler}>
+            <tr id="edit-symbols" className="hidden">
+              <td>
+                Edit Symbols:
+                <input
+                  onChange={editSymbols}
+                  className="edit-symbols"
+                  type="text"
+                  value={charsSpecial}
+                ></input>
+              </td>
+            </tr>
+            <button className="btn generate" onClick={submitHandler}>
               Generate
             </button>
             <div>
