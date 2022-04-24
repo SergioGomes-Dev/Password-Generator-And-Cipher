@@ -160,3 +160,44 @@ input {
     font-size: 14px;
   }
 }
+
+/* Cipher Program */
+.cipher-box {
+  border: 3px solid #ff0000;
+  width: 60%;
+  margin: 50px auto;
+  padding: 20px 10px;
+  text-align: center;
+}
+
+h3 {
+  font-family: "Poppins", sans-serif;
+  font-weight: 500;
+}
+
+.cipher-selection {
+  font-size: 18px;
+}
+
+.cipher-box table {
+  margin: auto;
+}
+
+.cipher-box td {
+  padding-bottom: 10px;
+}
+
+.key {
+  margin-left: 10px;
+  width: 50px;
+}
+
+.cipher-string {
+  width: 300px;
+  margin-left: 10px;
+}
+
+.encipher {
+  padding: 0px 10px;
+  margin-right: 15px;
+}
