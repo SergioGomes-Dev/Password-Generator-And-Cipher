@@ -29,3 +29,9 @@ button:hover {
   border: 3px solid #cc0000;
   cursor: pointer;
 }
+
+.active {
+  background-color: #cc0000;
+  color: white;
+  border: 3px solid #cc0000;
+}
