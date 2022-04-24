@@ -214,6 +214,56 @@ const PasswordGeneratorScreen = () => {
           </table>
         </div>
       </div>
+      <div className="info">
+        <h1>Password Information</h1>
+        <p>
+          This service is entirely within the browser. We do not save any
+          passwords
+        </p>
+        <p>
+          Some websites only allow certain special characters. Click Symbol
+          Options to customize the characters
+        </p>
+        <p>Do not use the same password for multiple sites</p>
+        <p>We suggest you use passwords with atleast 16 characters</p>
+        <p>
+          Using short passwords makes you vulnerable to{" "}
+          <a
+            href="https://en.wikipedia.org/wiki/Brute-force_attack"
+            target="_blank"
+            rel="noreferrer"
+          >
+            bruteforce attacks
+          </a>
+        </p>
+        <p>Do not let websites or web browsers save your passwords</p>
+        <p>Do not use any words in your passwords</p>
+        <p>
+          Using words or phrases makes you vulnerable to{" "}
+          <a
+            href="https://en.wikipedia.org/wiki/Dictionary_attack"
+            target="_blank"
+            rel="noreferrer"
+          >
+            dictionary attacks
+          </a>
+        </p>
+        <p>
+          The most secure passwords are long and made up of random letters,
+          numbers & special characters
+        </p>
+        <p>
+          You can check if a service you have an account with has been breached{" "}
+          <a
+            href="https://haveibeenpwned.com/"
+            target="_blank"
+            rel="noreferrer"
+          >
+            here
+          </a>
+        </p>
+        <p>If so immediately change your password</p>
+      </div>
     </>
   );
 };
