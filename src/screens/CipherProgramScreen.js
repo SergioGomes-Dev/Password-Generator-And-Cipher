@@ -8,6 +8,7 @@ const CipherProgramScreen = () => {
   const [vKey, setVKey] = useState("");
   const [vString, setVString] = useState("");
   const [vOutputString, setVOutputString] = useState("");
+  var error = false;
 
   function click(e) {
     setCipher(e.target.value);
@@ -29,19 +30,34 @@ const CipherProgramScreen = () => {
     }
   }
   function encipher() {
-    document
-      .getElementById("encipher-btn")
-      .setAttribute(
-        "aria-label",
-        "Text has been enciphered, press again to encipher text"
-      );
-
     if (cipher === "Caesar Cipher") {
       caesarCipher();
     } else if (cipher === "Vigenère Cipher") {
-      vigenèreCipher();
+      if (error === false) {
+        for (var i = 0; i < vKey.length; i++) {
+          var char = vKey[i];
+          if (char.match(/[a-z]/i)) {
+            error = false;
+          } else {
+            error = true;
+            errorDisplay();
+            break;
+          }
+        }
+      }
+      if (error === false) {
+        document
+          .getElementById("encipher-btn")
+          .setAttribute(
+            "aria-label",
+            "Text has been enciphered, press again to encipher text"
+          );
+        vigenèreCipher();
+      }
     }
   }
+  // var char= string[i];
+  // char.match(/[a-z]/i)
   function caesarCipher() {
     var output = "";
 
@@ -157,6 +173,17 @@ const CipherProgramScreen = () => {
     document.getElementById("copy-btn").focus();
   }
 
+  function errorDisplay() {
+    document.getElementById("error").classList.remove("hidden");
+    document.getElementById("errorclosebtn").focus();
+  }
+
+  function errorClick() {
+    document.getElementById("error").classList.add("hidden");
+    document.getElementById("encipher-btn").focus();
+    error = false;
+  }
+
   return (
     <>
       <div id="alert" className="alert hidden">
@@ -169,6 +196,21 @@ const CipherProgramScreen = () => {
             onKeyPress={alertClick}
             tabIndex={0}
             aria-label="Enciphered Text copied to clipboard, press to close alert"
+          >
+            &times;
+          </span>
+        </div>
+      </div>
+      <div id="error" className="alert hidden">
+        <div className="alert-box">
+          You can only use letters in the Key
+          <span
+            id="errorclosebtn"
+            className="closebtn"
+            onClick={errorClick}
+            onKeyPress={errorClick}
+            tabIndex={0}
+            aria-label="Error, you can only use letters in the Key, Press to close alert"
           >
             &times;
           </span>

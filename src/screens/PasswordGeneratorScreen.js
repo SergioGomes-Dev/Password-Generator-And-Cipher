@@ -11,16 +11,24 @@ const PasswordGeneratorScreen = () => {
   );
   const [charsSpecial, setCharsSpecial] = useState('~!@#$%^&*()_+=[]{}";><?/');
   var isSelected = false;
+  var error = false;
 
   function submitHandler(e) {
     e.preventDefault();
 
-    document
-      .getElementById("generate-btn")
-      .setAttribute(
-        "aria-label",
-        "Password has been generated, press again to generate new password"
-      );
+    //Error Handling
+    if (length < 3) {
+      console.log("Lower than 3");
+      error = true;
+      errorDisplay();
+    } else if (length >= 3) {
+      document
+        .getElementById("generate-btn")
+        .setAttribute(
+          "aria-label",
+          "Password has been generated, press again to generate new password"
+        );
+    }
 
     var charsLower = "abcdefghijklmnopqrstuvwxyz";
     var charsUpper = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
@@ -47,8 +55,9 @@ const PasswordGeneratorScreen = () => {
     if (isSelected === false) {
       setPassword("Cannot leave selections blank");
     }
+
     //If atleast 1 option is selected generate password
-    if (isSelected) {
+    if (isSelected && error === false) {
       //Shuffles the entire possible chars list
       charsSelected = charsSelected
         .split("")
@@ -113,6 +122,16 @@ const PasswordGeneratorScreen = () => {
     document.getElementById("copy-btn").focus();
   }
 
+  function errorDisplay() {
+    document.getElementById("error").classList.remove("hidden");
+    document.getElementById("errorclosebtn").focus();
+  }
+
+  function errorClick() {
+    document.getElementById("error").classList.add("hidden");
+    document.getElementById("generate-btn").focus();
+  }
+
   function symbolOptionsClick() {
     document.getElementById("edit-symbols").classList.toggle("hidden");
 
@@ -143,6 +162,22 @@ const PasswordGeneratorScreen = () => {
             onKeyPress={alertClick}
             tabIndex={0}
             aria-label="Password copied to clipboard, press to close alert"
+          >
+            {" "}
+            &times;
+          </span>
+        </div>
+      </div>
+      <div id="error" className="alert hidden">
+        <div className="alert-box">
+          Password length cannot be lower than 3
+          <span
+            id="errorclosebtn"
+            className="closebtn"
+            onClick={errorClick}
+            onKeyPress={errorClick}
+            tabIndex={0}
+            aria-label="Error, Password length cannot be lower than 3, press to close alert"
           >
             {" "}
             &times;
