@@ -56,8 +56,7 @@ const CipherProgramScreen = () => {
       }
     }
   }
-  // var char= string[i];
-  // char.match(/[a-z]/i)
+
   function caesarCipher() {
     var output = "";
 

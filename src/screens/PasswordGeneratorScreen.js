@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 
 const PasswordGeneratorScreen = () => {
-  const [length, setLength] = useState(3);
+  const [length, setLength] = useState(30);
   const [symbols, setSymbols] = useState(false);
-  const [uppercase, setUppercase] = useState(false);
-  const [lowercase, setLowercase] = useState(false);
-  const [numbers, setNumbers] = useState(false);
+  const [uppercase, setUppercase] = useState(true);
+  const [lowercase, setLowercase] = useState(true);
+  const [numbers, setNumbers] = useState(true);
   const [password, setPassword] = useState(
     "Generated Password Will Appear Here"
   );
@@ -211,6 +211,7 @@ const PasswordGeneratorScreen = () => {
                 <input
                   onClick={uppercaseClick}
                   type="checkbox"
+                  checked={uppercase}
                   aria-label="Include Uppercase Checkbox"
                 ></input>
               </td>
@@ -223,6 +224,7 @@ const PasswordGeneratorScreen = () => {
                 <input
                   onClick={lowercaseClick}
                   type="checkbox"
+                  checked={lowercase}
                   aria-label="Include Lowercase Checkbox"
                 ></input>
               </td>
@@ -235,6 +237,7 @@ const PasswordGeneratorScreen = () => {
                 <input
                   onClick={numbersClick}
                   type="checkbox"
+                  checked={numbers}
                   aria-label="Include Numbers Checkbox"
                 ></input>
               </td>
@@ -255,6 +258,7 @@ const PasswordGeneratorScreen = () => {
                 <input
                   onClick={symbolsClick}
                   type="checkbox"
+                  checked={symbols}
                   aria-label="Include Symbols Checkbox"
                 ></input>
               </td>
